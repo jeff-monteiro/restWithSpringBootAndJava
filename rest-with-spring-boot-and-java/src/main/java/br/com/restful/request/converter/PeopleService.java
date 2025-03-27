@@ -25,6 +25,8 @@ public class PeopleService {
     }
 
     private People mockPeople(int i) {
+        logger.info("Finding all people");
+
         People people = new People();
         people.setId(counter.incrementAndGet());
         people.setFirstName("FirstName " + i);
@@ -44,6 +46,21 @@ public class PeopleService {
         people.setAddress("Fortaleza - Ceará");
         people.setGender("Male");
         return people;
+    }
+
+    public People create(People people){
+        logger.info("Creating a person");
+        return people;
+    }
+
+    public People update(People people){
+        logger.info("Updating a person");
+        return people;
+    }
+
+    public void delete(String id){
+        logger.info("Deleting a person");
+
     }
 
 

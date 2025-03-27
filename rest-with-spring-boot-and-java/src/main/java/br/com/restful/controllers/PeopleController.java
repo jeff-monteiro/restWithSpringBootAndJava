@@ -5,10 +5,7 @@ import br.com.restful.model.People;
 import br.com.restful.request.converter.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +31,34 @@ public class PeopleController {
     )
     public People findById(@PathVariable ("id") String id) {
         return service.findById(id);
+
+    }
+
+    @RequestMapping(
+        method = RequestMethod.POST,
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public People create(@RequestBody People people) {
+        return service.create(people);
+
+    }
+
+    @RequestMapping(
+        method = RequestMethod.PUT,
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public People update(@RequestBody People people) {
+        return service.update(people);
+
+    }
+
+    @RequestMapping(value = "/{id}",
+            method = RequestMethod.DELETE
+    )
+    public void delete(@PathVariable ("id") String id) {
+        service.delete(id);
 
     }
 }
